@@ -8,6 +8,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<M-j>", "o<Esc>")
 vim.keymap.set("n", "<M-k>", "O<Esc>")
 
+vim.keymap.set("n", "<leader>;", ":s/;$//<CR>")
+
 --vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- LSP stuff
