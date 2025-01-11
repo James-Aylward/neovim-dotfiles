@@ -23,11 +23,11 @@ return  {
                             expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.laptop.options',
                         },
                         --home_manager = {
-                        --    expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
-                        --},
+                            --    expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
+                            --},
+                        },
                     },
                 },
-            },
-        })
-    end
-}
+            })
+        end
+    }
