@@ -8,6 +8,7 @@ return  {
         lsp.texlab.setup{}
         lsp.svelte.setup{}
         lsp.pyright.setup{}
+        lsp.java_language_server.setup{}
         lsp.nixd.setup({
             cmd = { "nixd" },
             settings = {
