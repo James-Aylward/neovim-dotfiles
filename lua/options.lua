@@ -23,6 +23,7 @@ vim.opt.smartcase = true
 vim.opt.termguicolors = true
 
 vim.opt.colorcolumn = "80"
+vim.opt.cursosline = true
 
 -- Force latex
 vim.g.tex_flavor = "latex"
