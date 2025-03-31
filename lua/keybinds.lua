@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>o", ":copen<CR>")
 vim.keymap.set("n", "<leader>c", ":cclose<CR>")
 
 vim.keymap.set("n", "<leader>m", ":make<CR>")
+vim.keymap.set("n", "<leader>s", ":ClangdSwitchSourceHeader<CR>")
 --vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- LSP stuff
