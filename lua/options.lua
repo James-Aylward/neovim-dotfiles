@@ -34,8 +34,10 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
 
 -- netrw
-vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 0
+
+-- Clipboard
+vim.o.clipboard = "unnamedplus"
 
 -- Autocommands
 -- Latex
