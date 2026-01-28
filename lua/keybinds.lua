@@ -20,8 +20,8 @@ vim.keymap.set("n", "<M-o>", ":lopen<CR>")
 vim.keymap.set("n", "<M-c>", ":lclose<CR>")
 
 
-vim.keymap.set({'n', 'x', 'o'}, 'gw', '<Plug>(leap)')
-vim.keymap.set('n',             'gW', '<Plug>(leap-from-window)')
+vim.keymap.set({'n', 'x', 'o'}, ',', '<Plug>(leap)')
+vim.keymap.set('n',             'gw', '<Plug>(leap-from-window)')
 -- LSP stuff
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
