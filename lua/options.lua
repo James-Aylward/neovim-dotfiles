@@ -41,7 +41,7 @@ vim.o.clipboard = "unnamedplus"
 
 -- Autocommands
 -- Latex
-vim.api.nvim_create_autocmd( {"BufEnter", "BufWinEnter"}, {
-    pattern = {"*.tex"},
-    command = [[ set wrap linebreak breakindent spell ]]
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.tex" },
+	command = [[ set wrap linebreak breakindent spell ]],
 })
