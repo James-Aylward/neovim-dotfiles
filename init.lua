@@ -23,4 +23,4 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
-vim.o.cmdheight=0
+vim.o.cmdheight = 0
