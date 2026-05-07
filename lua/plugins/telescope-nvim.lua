@@ -13,7 +13,10 @@ return {
 		vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, {})
 		vim.keymap.set("n", "<leader>S", builtin.lsp_dynamic_workspace_symbols, {})
 
-		vim.keymap.set("n", "<leader>d", builtin.diagnostics, {bufnr=0})
+		vim.keymap.set("n", "<leader>d", function()
+            builtin.diagnostics({bufnr=0})
+        end, {})
+
 		vim.keymap.set("n", "<leader>D", builtin.diagnostics, {})
 
 		vim.keymap.set("n", "<leader>m", function()
