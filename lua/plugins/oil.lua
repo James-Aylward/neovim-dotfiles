@@ -12,7 +12,8 @@ return {
   config = function()
       require("oil").setup({
           default_file_explorer = true,
-         columns = {
+          skip_confirm_for_simple_edits = true,
+             columns = {
           },
       })
   end
