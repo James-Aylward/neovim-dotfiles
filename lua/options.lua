@@ -29,8 +29,6 @@ vim.opt.cursorline = true
 vim.g.tex_flavor = "latex"
 
 -- Folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
 
 -- netrw
@@ -38,6 +36,9 @@ vim.g.netrw_banner = 0
 
 -- Clipboard
 vim.o.clipboard = "unnamedplus"
+
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.o.cmdheight = 0
 
 -- Autocommands
 -- Latex
