@@ -49,43 +49,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf }
 
-		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
-		end, opts)
-		vim.keymap.set("n", "gi", function()
-			vim.lsp.buf.implementation()
-		end, opts)
-		vim.keymap.set("n", "gDh", function()
-			vim.cmd("split")
-			vim.lsp.buf.definition()
-		end, opts)
-		vim.keymap.set("n", "gDv", function()
-			vim.cmd("vsplit")
-			vim.lsp.buf.definition()
-		end, opts)
-		vim.keymap.set("n", "gr", function()
-			vim.lsp.buf.references()
-		end, opts)
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
 		end, opts)
-		vim.keymap.set("n", "<leader>s", function()
-			vim.lsp.buf.document_symbol()
-		end, opts)
-		vim.keymap.set("n", "<leader>S", function()
-			vim.lsp.buf.workspace_symbol()
-		end, opts)
+		vim.keymap.set("n", "gi", "<Cmd>Pick lsp scope='implementation'<CR>")
+		vim.keymap.set("n", "gd", "<Cmd>Pick lsp scope='definition'<CR>")
+        vim.keymap.set("n", "gr", "<Cmd>Pick lsp scope='references'<CR>")
+        vim.keymap.set("n", "<leader>s", "<Cmd>Pick lsp scope='document_symbol'<CR>")
+        vim.keymap.set("n", "<leader>S", "<Cmd>Pick lsp scope='workspace_symbol_live'<CR>")
+        vim.keymap.set("n", "<leader>d", "<Cmd>Pick diagnostic<CR>")
 		vim.keymap.set("n", "<leader>w", function()
 			vim.lsp.buf.format()
-		end, opts)
-		vim.keymap.set("n", "<leader>d", function()
-			vim.diagnostic.setqflist()
-		end, opts)
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_next()
-		end, opts)
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_prev()
 		end, opts)
 		vim.keymap.set("n", "<leader>a", function()
 			vim.lsp.buf.code_action()
@@ -110,7 +84,12 @@ require("mini.git").setup()
 require("mini.icons").setup()
 require("mini.indentscope").setup()
 require("mini.jump").setup()
-require("mini.jump2d").setup()
+require("mini.jump2d").setup({
+  view = {
+      dim = true,
+      n_steps_ahead = 2
+  }
+})
 require("mini.move").setup()
 require("mini.notify").setup()
 require("mini.operators").setup()
@@ -123,6 +102,7 @@ require("mini.cmdline").setup()
 
 vim.keymap.set("n", "<leader>f", "<Cmd>Pick files<CR>", {})
 vim.keymap.set("n", "<leader>g", "<Cmd>Pick grep_live<CR>", {})
+
 vim.keymap.set("n", "-", function()
 	require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
 end, { desc = "Open mini.files (directory of current file)" })
@@ -134,6 +114,7 @@ vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
 
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "DiagnosticSignError", { bg = "NONE", fg="#fb4934" })
 vim.o.cmdheight = 0
 vim.opt.clipboard = "unnamedplus"
 vim.opt.colorcolumn = "80"
