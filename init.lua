@@ -87,7 +87,6 @@ require("mini.jump").setup()
 require("mini.jump2d").setup({
   view = {
       dim = true,
-      n_steps_ahead = 2
   }
 })
 require("mini.move").setup()
