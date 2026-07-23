@@ -33,6 +33,7 @@ vim.lsp.enable("basedpyright")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ruff")
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("texlab")
 vim.lsp.enable("statix")
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -79,7 +80,6 @@ require("mini.basics").setup()
 require("mini.bracketed").setup()
 require("mini.comment").setup()
 require("mini.extra").setup()
-require("mini.files").setup()
 require("mini.git").setup()
 require("mini.icons").setup()
 require("mini.indentscope").setup()
@@ -98,14 +98,35 @@ require("mini.surround").setup()
 require("mini.trailspace").setup()
 require("mini.cmdline").setup()
 
+require("oil").setup({
+  default_file_explorer = true,
+  columns = {
+    "icon",
+  },
+  skip_confirm_for_simple_edits = true,
+  prompt_save_on_select_new_entry = true,
+})
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 require('fzf-lua').setup({'telescope'})
 
 vim.keymap.set("n", "<leader>f", "<Cmd>FzfLua files<CR>", {})
 vim.keymap.set("n", "<leader>g", "<Cmd>FzfLua live_grep<CR>", {})
 
-vim.keymap.set("n", "-", function()
-	require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-end, { desc = "Open mini.files (directory of current file)" })
+local kmap = vim.keymap.set
+
+kmap('n', '<leader>kr', function() require("knap").process_once() end)
+kmap('n', '<leader>kc', function() require("knap").close_viewer() end)
+kmap('n', '<leader>ka', function() require("knap").toggle_autopreviewing() end)
+kmap('n', '<leader>kf', function() require("knap").forward_jump() end)
+
+local gknapsettings = {
+    texoutputext = "pdf",
+    textopdf = "latexmk -pdf -synctex=1 -interaction=batchmode %docroot%",
+}
+
+vim.g.knap_settings = gknapsettings
+
 
 -- Tabs = 4 spaces
 vim.opt.expandtab = true
